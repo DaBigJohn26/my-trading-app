@@ -12,8 +12,8 @@ st.caption("System Status: 🟢 Always-On Cloud Scanning Online (No Laptop Requi
 
 # Sidebar for Mobile Notification Configuration
 st.sidebar.header("🔌 Phone Link Settings")
-telegram_token = st.sidebar.text_input("Telegram Bot Token", type="password", help="Get this free from @BotFather")
-chat_id = st.sidebar.text_input("Telegram Chat ID", help="Get this free from @userinfobot")
+telegram_token = 8666247444:AAEFH9hkcNl6ioXQyQAZGmlNdr9FR2fw098
+chat_id = st.sidebar.text_input("8546529654")
 min_score = st.sidebar.slider("Minimum Execution Score Trigger", 50, 80, 60)
 
 def is_high_impact_news_active():
