@@ -10,11 +10,10 @@ st.set_page_config(page_title="Alpha Confluence Command Center", layout="wide")
 st.title("🧠 Institutional Multi-Confluence Trading Dashboard")
 st.caption("System Status: 🟢 Always-On Cloud Scanning Online (No Laptop Required)")
 
-# Sidebar for Mobile Notification Configuration
-st.sidebar.header("🔌 Phone Link Settings")
-telegram_token = 8666247444:AAEFH9hkcNl6ioXQyQAZGmlNdr9FR2fw098
-chat_id = st.sidebar.text_input("8546529654")
-min_score = st.sidebar.slider("Minimum Execution Score Trigger", 50, 80, 60)
+# ⚠️ TYPE YOUR ACTUAL API CREDENTIALS HERE (Leave as "" if you want to test without alerts)
+telegram_token = "your_actual_token_here"
+chat_id = "your_actual_id_here"
+min_score = 60
 
 def is_high_impact_news_active():
     try:
@@ -36,11 +35,17 @@ def is_high_impact_news_active():
         return False, ""
 
 def send_telegram_notification(message):
-    if telegram_token and chat_id:
-        url = f"https://telegram.org{telegram_token}/sendMessage"
+    # SAFETY GUARD: Pre-checks tokens to avoid script execution errors
+    if not telegram_token or "your_actual" in telegram_token or not chat_id:
+        return
+    try:
+        url = f"https://api.telegram.org/bot{telegram_token}/sendMessage"
         payload = {"chat_id": chat_id, "text": message}
-        try: requests.post(url, json=payload, timeout=5)
-        except: pass
+        resp = requests.post(url, json=payload, timeout=5)
+        if resp.status_code != 200:
+            print(f"Telegram API warning: {resp.text}")
+    except Exception as e:
+        print(f"Network log: Telegram alert bypassed ({e})")
 
 # 1. Fundamental News Calendar Shield Check
 news_active, news_name = is_high_impact_news_active()
@@ -63,7 +68,7 @@ for idx, (ticker, sector) in enumerate(tickers.items()):
                 st.error("Data Stream Lagging")
                 continue
                 
-            # Balanced Indicator Math
+            # Master Indicators Math
             df['Swing_High'] = df['High'].shift(1).rolling(window=5).max()
             df['Market_Structure_Trend'] = np.where(df['Close'] > df['Swing_High'], 1, 0)
             df['Body_Size'] = (df['Close'] - df['Open']).abs()
@@ -91,7 +96,7 @@ for idx, (ticker, sector) in enumerate(tickers.items()):
             if float(df['MACD'].iat[-1]) > float(df['MACD_Signal'].iat[-1]) and float(df['RSI'].iat[-1]) < 65: score += 20
             if 'Volume' in df.columns and float(df['Volume'].iat[-1]) > float(df['Volume'].rolling(window=20).mean().iat[-1]): score += 20
 
-            # UI Dashboard Display Elements
+            # UI Display
             st.metric("Live Market Price", f"${current_close:,.2f}")
             st.write(f"**Strategy Confluence Score:** {score}/100")
             st.progress(score / 100)
@@ -105,9 +110,7 @@ for idx, (ticker, sector) in enumerate(tickers.items()):
                     st.warning("🎯 LIQUIDITY SWEEP BUY TRIGGERED!")
                     send_telegram_notification(f"🎯 TRAP ALERT: Institutional Liquidity Sweep detected on {ticker} at ${current_close:,.2f}! Open MT5 on your phone to trade.")
                 else:
-                    st.info("⬜ Holding: Waiting for Market Structure Alignment")
-                    st.success("🔌 Phone Link Confirmed!")
-                    send_telegram_notification("🚀 SYSTEM STATUS ACTIVE: Your AI Trading Bot is officially linked to your phone and monitoring the global markets 24/7!")
+                    st.info("⬜ Holding for Setup")
                     
         except Exception as e:
             st.error(f"Feed error: {e}")
