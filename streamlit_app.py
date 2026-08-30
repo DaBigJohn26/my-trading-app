@@ -11,8 +11,8 @@ st.title("🧠 Institutional Multi-Confluence Trading Dashboard")
 st.caption("System Status: 🟢 Always-On Cloud Scanning Online (No Laptop Required)")
 
 # ⚠️ TYPE YOUR ACTUAL API CREDENTIALS HERE (Leave as "" if you want to test without alerts)
-telegram_token = "your_actual_token_here"
-chat_id = "your_actual_id_here"
+telegram_token = "8666247444:AAEFH9hkCNl6ioXQyQAZGmlNdr9FR2fw098"
+chat_id = "8546529654"
 min_score = 60
 
 def is_high_impact_news_active():
