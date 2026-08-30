@@ -56,7 +56,16 @@ else:
 
 # 2. Main Strategy Processing Matrix
 #  NEW EXPANDED MATRIX (Adds Ethereum and GBP/USD smoothly):
-tickers = {"BTC-USD": "Crypto", "ETH-USD": "Ethereum", "GC=F": "Gold", "EURUSD=X": "Forex", "GBPUSD=X": "Pound/USD"}
+tickers = (# 🌐 ULTIMATE 2090 SECTOR MATRIX (Forex, Metals, Energies, Indices, & Crypto)
+global_assets = {
+    "EURUSD=X": "Forex - EURUSD", "GBPUSD=X": "Forex - GBPUSD", "USDJPY=X": "Forex - USDJPY",
+    "AUDUSD=X": "Forex - AUDUSD", "USDCAD=X": "Forex - USDCAD",
+    "GC=F": "Metal - Gold", "SI=F": "Metal - Silver", 
+    "CL=F": "Commodity - Crude", "NG=F": "Commodity - NatGas",
+    "^GSPC": "Index - S&P 500", "^IXIC": "Index - Nasdaq",
+    "BTC-USD": "Crypto - Bitcoin", "ETH-USD": "Crypto - Ethereum"
+}
+
 cols = st.columns(len(tickers))
 
 for idx, (ticker, sector) in enumerate(tickers.items()):
