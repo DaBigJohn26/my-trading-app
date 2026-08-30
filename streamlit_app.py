@@ -55,7 +55,8 @@ else:
     st.success("🛡️ Capital Shield Active: No dangerous macro news events blocking current market structure.")
 
 # 2. Main Strategy Processing Matrix
-tickers = {"BTC-USD": "Crypto", "GC=F": "Gold", "EURUSD=X": "Forex"}
+#  NEW EXPANDED MATRIX (Adds Ethereum and GBP/USD smoothly):
+tickers = {"BTC-USD": "Crypto", "ETH-USD": "Ethereum", "GC=F": "Gold", "EURUSD=X": "Forex", "GBPUSD=X": "Pound/USD"}
 cols = st.columns(len(tickers))
 
 for idx, (ticker, sector) in enumerate(tickers.items()):
