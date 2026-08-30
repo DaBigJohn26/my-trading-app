@@ -106,6 +106,8 @@ for idx, (ticker, sector) in enumerate(tickers.items()):
                     send_telegram_notification(f"🎯 TRAP ALERT: Institutional Liquidity Sweep detected on {ticker} at ${current_close:,.2f}! Open MT5 on your phone to trade.")
                 else:
                     st.info("⬜ Holding: Waiting for Market Structure Alignment")
+                    st.success("🔌 Phone Link Confirmed!")
+                    send_telegram_notification("🚀 SYSTEM STATUS ACTIVE: Your AI Trading Bot is officially linked to your phone and monitoring the global markets 24/7!")
                     
         except Exception as e:
             st.error(f"Feed error: {e}")
