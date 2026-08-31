@@ -8,7 +8,7 @@ from datetime import datetime
 st.set_page_config(page_title="2090 Ultimate Wealth Terminal", layout="wide")
 
 st.title("👑 2090 Institutional Multi-Strategy Command Center")
-st.caption("System Status: 🟢 Multi-Tier Alert Cloud Core Online (No Laptop Required)")
+st.caption("System Status: 🟢 Explicit Mobile Alerts Engaged (No Laptop Required)")
 
 # ⚠️ WORKING TELEGRAM DETAILS LOCKDOWN
 telegram_token = "8666247444:AAEFH9hkCNl6ioXQyQAZGmlNdr9FR2fw098"
@@ -42,8 +42,8 @@ tab1, tab2 = st.tabs(["📊 2090 Sessional Forex Matrix", "🚀 High-Frequency A
 with tab1:
     st.header("Sessional Structural & Liquidity Indicators")
     global_assets = {
-        "EURUSD=X": "Forex - EURUSD", "GBPUSD=X": "Forex - GBPUSD", "USDJPY=X": "Forex - USDJPY",
-        "GC=F": "Metal - Gold", "BTC-USD": "Crypto - Bitcoin"
+        "EURUSD=X": "EURUSD", "GBPUSD=X": "GBPUSD", "USDJPY=X": "USDJPY",
+        "GC=F": "XAUUSD", "BTC-USD": "BTCUSD"
     }
     cols = st.columns(len(global_assets))
     asset_list = list(global_assets.items())
@@ -80,19 +80,19 @@ with tab1:
                 if session_id == "LONDON_MANIPULATION":
                     if current_low < asian_low_zone and current_close > asian_low_zone:
                         st.error("🎯 LIQUIDITY SWEEP DETECTED!")
-                        send_telegram_notification(f"🎯 TRAP ALERT: London swept the Asian Low on {label} at ${current_close:.4f}! Open mobile MT5 to trade.")
+                        send_telegram_notification(f"🚨 Sessional Alert!\n🔹 Pair: {label}\n🔹 Lot Size: 0.10\n🔹 Action: BUY\n🎯 Strategy: London Liquidity Sweep")
                     else: st.info("⬜ Hunting Sweeps...")
                 elif session_id == "NEW_YORK_DISTRIBUTION":
                     if current_close > asian_high_zone and float(df['MACD'].iat[-1]) > float(df['MACD_Signal'].iat[-1]):
                         st.success("🟩 NY IMPULSE BREAKOUT!")
-                        send_telegram_notification(f"🟩 BREAKOUT ALERT: New York launched trend impulse on {label} at ${current_close:.4f}! Open mobile MT5.")
+                        send_telegram_notification(f"🚀 Breakout Alert!\n🔹 Pair: {label}\n🔹 Lot Size: 0.10\n🔹 Action: BUY\n🎯 Strategy: New York Sessional Impulse")
                     else: st.info("⬜ Tracking Momentum...")
                 else: st.info("🔵 Range Mapping Mode")
             except: st.error("Syncing...")
 
 with tab2:
     st.header("⚡ Cross-Exchange Capital Arbitrage Board")
-    st.caption("The cloud server scans global matrices 24/7. Mini & macro setups route to Telegram automatically based on gap scale.")
+    st.caption("The cloud server scans global matrices 24/7. Real-time gaps route to Telegram with explicit copy-paste parameters.")
     
     # On-Demand Dashboard Trigger Button
     run_scan = st.button("🔄 Run Instant Arbitrage Loop Scan", type="primary")
@@ -123,13 +123,13 @@ with tab2:
                     if net_profit > 0.10:
                         st.success(f"🟩 OPEN MARGIN: +${net_profit:.2f}")
                         
-                        # --- TRIPLE-TIER INTELLIGENT ROUTER ---
+                        # --- EXPLICIT BABY-GUIDE TELEGRAM ALERTS ---
                         if mock_spread >= 145.00:
-                            # 🟩 Tier 3: Macro Premium Setup Chime
-                            send_telegram_notification(f"🟩 MACRO ARBITRAGE DETECTED: Premium gap of ${mock_spread:.2f} opened on BTC! Est Net: +${net_profit:.2f}. Execute on mobile MT5.")
+                            # Premium High-Tier Alert Layout
+                            send_telegram_notification(f"🟩 MACRO ARBITRAGE DETECTED!\n🔹 Pair: BTCUSD\n🔹 Lot Size: 0.10\n🔹 Action: BUY\n💰 Expected Profit: +${net_profit:.2f}\n👉 Open mobile MT5 and tap BUY now!")
                         elif 45.00 <= mock_spread < 145.00:
-                            # 🟡 Tier 2: Mini-Notification Text Alert
-                            send_telegram_notification(f"🟡 Mini-Arb Signal: BTC gap at ${mock_spread:.2f} (Net: +${net_profit:.2f})")
+                            # Detailed Mini-Notification Layout
+                            send_telegram_notification(f"裁 🟡 Mini-Arb Signal:\n🔹 Pair: BTCUSD\n🔹 Lot Size: 0.05\n🔹 Action: BUY\n💰 Gap Spread: +${mock_spread:.2f}\n👉 Tap BUY inside mobile MT5.")
                     else:
                         st.info("⬜ Margin Too Thin")
     except Exception as e:
