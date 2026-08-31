@@ -8,22 +8,21 @@ from datetime import datetime
 st.set_page_config(page_title="2090 Ultimate Wealth Terminal", layout="wide")
 
 st.title("👑 2090 Institutional Multi-Strategy Command Center")
-st.caption("System Status: 🟢 Explicit Mobile Alerts Engaged (No Laptop Required)")
+st.caption("System Status: 🟢 Explicit Mobile Alerts Active")
 
-# ⚠️ WORKING TELEGRAM DETAILS LOCKDOWN
+# ⚠️ TYPE YOUR TELEGRAM CREDENTIALS HERE
 telegram_token = "8666247444:AAEFH9hkCNl6ioXQyQAZGmlNdr9FR2fw098"
 chat_id = "8546529654"
 min_score = 60
 
 def get_current_session():
-    """Maps sessional regimes based on UTC hours"""
     current_hour = datetime.utcnow().hour
     if 22 <= current_hour or current_hour < 7:
-        return "ASIAN_ACCUMULATION", "🔵 ASIAN SESSION: Accumulation & Range Mapping (Retail Trap Active)"
+        return "ASIAN_ACCUMULATION", "🔵 ASIAN SESSION: Accumulation & Range Mapping"
     elif 7 <= current_hour < 12:
-        return "LONDON_MANIPULATION", "🔴 LONDON SESSION: Manipulation & Liquidity Sweeping (Hunting Stops)"
+        return "LONDON_MANIPULATION", "🔴 LONDON SESSION: Manipulation & Liquidity Sweeping"
     else:
-        return "NEW_YORK_DISTRIBUTION", "🟢 NEW YORK SESSION: Distribution & Impulse Extension (Riding Flow)"
+        return "NEW_YORK_DISTRIBUTION", "🟢 NEW YORK SESSION: Distribution & Impulse Extension"
 
 def send_telegram_notification(message):
     if not telegram_token or "your_actual" in telegram_token or not chat_id:
@@ -92,9 +91,8 @@ with tab1:
 
 with tab2:
     st.header("⚡ Cross-Exchange Capital Arbitrage Board")
-    st.caption("The cloud server scans global matrices 24/7. Real-time gaps route to Telegram with explicit copy-paste parameters.")
+    st.caption("The cloud server scans global matrices 24/7. Real-time gaps route to Telegram with explicit parameters.")
     
-    # On-Demand Dashboard Trigger Button
     run_scan = st.button("🔄 Run Instant Arbitrage Loop Scan", type="primary")
     
     try:
@@ -117,23 +115,21 @@ with tab2:
                     st.markdown(f"### **Node Layer {idx+1}**")
                     st.metric("Coinbase Price", f"${price_coinbase:,.2f}")
                     st.metric("Kraken Price", f"${price_kraken:,.2f}")
-                    st.write(f"**Gross Spread:** +\${mock_spread:.2f}")
-                    st.write(f"**Fee Friction:** \${fees:.2f}")
+                    st.write(f"**Gross Spread:** +${mock_spread:.2f}")
+                    st.write(f"**Fee Friction:** ${fees:.2f}")
                     
                     if net_profit > 0.10:
                         st.success(f"🟩 OPEN MARGIN: +${net_profit:.2f}")
                         
-                        # --- EXPLICIT BABY-GUIDE TELEGRAM ALERTS ---
+                        # --- EXPLICIT TELEGRAM ALERTS IN TEXT FORMAT ---
                         if mock_spread >= 145.00:
-                            # Premium High-Tier Alert Layout
-                            send_telegram_notification(f"🟩 MACRO ARBITRAGE DETECTED!\n🔹 Pair: BTCUSD\n🔹 Lot Size: 0.10\n🔹 Action: BUY\n💰 Expected Profit: +${net_profit:.2f}\n👉 Open mobile MT5 and tap BUY now!")
+                            send_telegram_notification(f"🚨 MACRO ARBITRAGE DETECTED!\n🔹 Pair: BTCUSD\n🔹 Lot Size: 0.10\n🔹 Action: BUY\n💰 Expected Profit: +${net_profit:.2f}\n👉 Open mobile MT5 and tap BUY now!")
                         elif 45.00 <= mock_spread < 145.00:
-                            # Detailed Mini-Notification Layout
-                            send_telegram_notification(f"裁 🟡 Mini-Arb Signal:\n🔹 Pair: BTCUSD\n🔹 Lot Size: 0.05\n🔹 Action: BUY\n💰 Gap Spread: +${mock_spread:.2f}\n👉 Tap BUY inside mobile MT5.")
+                            send_telegram_notification(f"🚨 Mini-Arb Signal:\n🔹 Pair: BTCUSD\n🔹 Lot Size: 0.05\n🔹 Action: BUY\n💰 Gap Spread: +${mock_spread:.2f}\n👉 Tap BUY inside mobile MT5.")
                     else:
                         st.info("⬜ Margin Too Thin")
     except Exception as e:
         st.error(f"Scanner sync delayed: {e}")
 
 st.divider()
-st.info("💡 Ultimate Mode Active: Keep this mobile tab saved on your phone home screen. It scans global markets 24/7 and rings your pocket for premium opportunities!")
+st.info("💡 Ultimate Mode Active: Keep this mobile tab saved on your phone home screen.")
