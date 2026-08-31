@@ -25,7 +25,7 @@ def get_current_session():
         return "NEW_YORK_DISTRIBUTION", "🟢 NEW YORK SESSION: Distribution & Impulse Extension"
 
 def send_telegram_notification(message):
-    if not telegram_token or "8666247444:AAEFH9hkCNl6ioXQyQAZGmlNdr9FR2fw098" in telegram_token or not chat_id:8546529654
+    if not telegram_token or "your_actual" in telegram_token or not chat_id:
         return
     try:
         url = f"https://telegram.org{telegram_token}/sendMessage"
