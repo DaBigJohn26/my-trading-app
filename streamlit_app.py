@@ -112,14 +112,14 @@ with tab2:
                     fees = (price_coinbase * trade_fraction * 0.0005) + (price_kraken * trade_fraction * 0.0005)
                     net_profit = gross - fees
                     
-                    st.markdown(f"### **Node Layer {idx+1}**")
-                    st.metric("Coinbase Price", f"${price_coinbase:,.2f}")
-                    st.metric("Kraken Price", f"${price_kraken:,.2f}")
-                    st.write(f"**Gross Spread:** +${mock_spread:.2f}")
-                    st.write(f"**Fee Friction:** ${fees:.2f}")
+                    # 🚀 NEW VISUAL SCREEN LAYOUT CHANGES THE WORD 'NODE' ENTIRELY
+                    st.markdown(f"### **📋 MT5 Cheat Sheet {idx+1}**")
+                    st.write(f"**Asset target:** `BTCUSD`")
+                    st.write(f"**Gross Spread Gap:** +${mock_spread:.2f}")
+                    st.write(f"**Fee Deductions:** ${fees:.2f}")
                     
                     if net_profit > 0.10:
-                        st.success(f"🟩 OPEN MARGIN: +${net_profit:.2f}")
+                        st.success(f"🟩 NET PROFIT: +${net_profit:.2f}")
                         
                         # --- EXPLICIT TELEGRAM ALERTS IN TEXT FORMAT ---
                         if mock_spread >= 145.00:
